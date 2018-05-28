@@ -4,9 +4,11 @@ import './Hello.css';
 export interface IProps {
     name: string;
     enthusiasmLevel?: number;
+    onIncrement?: () => void;
+    onDecrement?: () => void;
 }
 
-function Hello( {name, enthusiasmLevel = 1 }: IProps ) {
+function Hello( {name, enthusiasmLevel = 1, onIncrement, onDecrement }: IProps ) {
     if (enthusiasmLevel <= 0) {
         throw new Error('Your could be a little more enthusiastic. :D');
     }
@@ -15,6 +17,10 @@ function Hello( {name, enthusiasmLevel = 1 }: IProps ) {
         <div className="hello">
             <div className="greeting">
             Hello {name + getExclamationMarks(enthusiasmLevel)}
+            </div>
+            <div>
+                <button onClick={onDecrement}>-</button>
+                <button onClick={onIncrement}>+</button>
             </div>
         </div>
     );
