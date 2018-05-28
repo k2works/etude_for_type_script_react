@@ -2,8 +2,8 @@ import * as React from "react";
 import Square from "./Square";
 
 class Board extends React.Component {
-    public renderSquare(i: any) {
-        return <Square />;
+    public renderSquare(i: number) {
+        return <Square value={i} />;
     }
 
     public render() {
