@@ -3,7 +3,8 @@ import Square from "./Square";
 import { SquareType} from "./Square";
 
 interface IBoardState {
-    squares:SquareType[]
+    squares:SquareType[];
+    xIsNext:boolean;
 }
 
 class Board extends React.Component<any, IBoardState> {
@@ -11,11 +12,12 @@ class Board extends React.Component<any, IBoardState> {
         super(props);
         this.state = {
             squares: Array(9).fill(null),
+            xIsNext: true,
         };
     }
 
     public render() {
-        const status = 'Next player: X';
+        const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
         return (
             <div>
@@ -50,7 +52,10 @@ class Board extends React.Component<any, IBoardState> {
         return () => {
             const squares = this.state.squares.slice();
             squares[i] = 'X';
-            this.setState({squares});
+            this.setState({
+                squares,
+                xIsNext: !this.state.xIsNext,
+            });
         }
     }
 }
