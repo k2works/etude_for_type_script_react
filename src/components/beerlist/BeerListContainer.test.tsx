@@ -9,8 +9,8 @@ describe('BeerListContainer', () => {
         const addItemSpy = jest.fn();
         const wrapper = shallow(<BeerListContainer/>);
         expect(wrapper.containsAllMatchingElements([
-            <InputArea onSubmit={addItemSpy}/>,
-            <BeerList  items={[]}/>
+            <InputArea key={0} onSubmit={addItemSpy}/>,
+            <BeerList  key={1} items={[]}/>
         ])).toEqual(true);
     });
 
@@ -41,6 +41,18 @@ describe('BeerListContainer', () => {
         // inputArea.prop('onSubmit')('Sam Adams');
         // expect(wrapper.state('beer')).toEqual(['Sam Adams']);
     });
+
+    it('renders the items', () => {
+        const wrapper = mount(<BeerListContainer/>);
+        const addButton = wrapper.find('button');
+        const input = wrapper.find('input');
+
+        input.simulate('change', {target: { value: 'Sam Adams' }});
+        addButton.simulate('click');
+        input.simulate('change', {target: { value: 'Resin' }});
+        addButton.simulate('click');
+        expect(wrapper.find('li').length).toEqual(2);
+    })
 });
 
 describe('InputArea', () => {
