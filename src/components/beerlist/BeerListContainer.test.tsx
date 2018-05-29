@@ -1,4 +1,4 @@
-import {shallow } from "enzyme";
+import {mount, shallow} from "enzyme";
 import * as React from 'react';
 import {BeerList} from "./BeerList";
 import {BeerListContainer} from "./BeerListContainer";
@@ -26,7 +26,7 @@ describe('BeerListContainer', () => {
         expect(wrapper.state('beers')).toEqual(['Sam Adams']);
     });
 
-    it('passes addItem to IputArea', () => {
+    it('passes addItem to InputArea', () => {
         const wrapper = shallow(<BeerListContainer/>);
         const inputArea = wrapper.find(InputArea);
         const instance = wrapper.instance() as BeerListContainer;
@@ -52,4 +52,14 @@ describe('InputArea', () => {
             ]
         )).toEqual(true);
     });
+
+    it('should accept input', () => {
+        const wrapper = mount(<InputArea/>);
+        let input = wrapper.find('input');
+        input.simulate('change', {target: { value: 'Resin' }});
+        expect(wrapper.state('text')).toEqual('Resin');
+
+        input = wrapper.find('input');
+        expect(input.prop('value')).toEqual('Resin');
+    })
 });
