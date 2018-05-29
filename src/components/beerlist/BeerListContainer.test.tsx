@@ -10,7 +10,7 @@ describe('BeerListContainer', () => {
         const wrapper = shallow(<BeerListContainer/>);
         expect(wrapper.containsAllMatchingElements([
             <InputArea onSubmit={addItemSpy}/>,
-            <BeerList />
+            <BeerList  items={[]}/>
         ])).toEqual(true);
     });
 
@@ -76,5 +76,18 @@ describe('InputArea', () => {
 
         expect(addItemSpy).toBeCalled();
         expect(addItemSpy).toBeCalledWith('Octoberfest');
+    });
+});
+
+describe('BeerList', () => {
+    it('should render zero items', () => {
+        const wrapper = shallow(<BeerList items={[]}/>);
+        expect(wrapper.find('li')).toHaveLength(0)
+    });
+
+    it('should render some items', () => {
+        const items = ['Sam Adams', 'Resin', 'Octoberfest'];
+        const wrapper = shallow(<BeerList items={items}/>);
+        expect(wrapper.find('li')).toHaveLength(3)
     });
 });
