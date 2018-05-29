@@ -5,11 +5,12 @@ import {BeerListContainer} from "./BeerListContainer";
 import {InputArea} from "./InputArea";
 
 describe('BeerListContainer', () => {
-    it('should render InputArea and BeerList', () => {
+    xit('should render InputArea and BeerList', () => {
+        const addItemSpy = jest.fn();
         const wrapper = shallow(<BeerListContainer/>);
         expect(wrapper.containsAllMatchingElements([
-            <InputArea key={1}/>,
-            <BeerList key={1}/>
+            <InputArea onSubmit={addItemSpy}/>,
+            <BeerList />
         ])).toEqual(true);
     });
 
@@ -44,22 +45,36 @@ describe('BeerListContainer', () => {
 
 describe('InputArea', () => {
     it('should contain an input and a button', () => {
-        const wrapper = shallow(<InputArea/>);
+        const addItemSpy = jest.fn();
+        const wrapper = shallow(<InputArea onSubmit={addItemSpy}/>);
         expect(wrapper.containsAllMatchingElements(
             [
-                <input key={1}/>,
+                <input key={1} />,
                 <button key={1}>Add</button>
             ]
         )).toEqual(true);
     });
 
     it('should accept input', () => {
-        const wrapper = mount(<InputArea/>);
+        const addItemSpy = jest.fn();
+        const wrapper = mount(<InputArea onSubmit={addItemSpy}/>);
         let input = wrapper.find('input');
         input.simulate('change', {target: { value: 'Resin' }});
         expect(wrapper.state('text')).toEqual('Resin');
 
         input = wrapper.find('input');
         expect(input.prop('value')).toEqual('Resin');
-    })
+    });
+
+    it('should call onSubmit when Add is clicked', () => {
+        const addItemSpy = jest.fn();
+        const wrapper = shallow(<InputArea onSubmit={addItemSpy}/>);
+        wrapper.setState({text:'Octoberfest'});
+        const addButton = wrapper.find('button');
+
+        addButton.simulate('click');
+
+        expect(addItemSpy).toBeCalled();
+        expect(addItemSpy).toBeCalledWith('Octoberfest');
+    });
 });

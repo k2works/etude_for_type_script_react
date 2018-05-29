@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface IInputAreaProps {
-    onSubmit?: (name: any) => void;
+    onSubmit: (name: any) => void;
 }
 
 interface IInputAreaState {
@@ -15,15 +15,20 @@ export class InputArea extends React.Component<IInputAreaProps, IInputAreaState>
             text: ''
         };
         this.setText = this.setText.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     public render() {
         return (
             <div>
                 <input value={this.state.text} onChange={this.setText}/>
-                <button>Add</button>
+                <button onClick={this.handleClick}>Add</button>
             </div>
         );
+    }
+
+    private handleClick() {
+        this.props.onSubmit(this.state.text);
     }
 
     private setText(event: any) {
