@@ -16,5 +16,13 @@ describe('BeerListContainer', () => {
     it('should start with an empty list', () => {
         const wrapper = shallow(<BeerListContainer/>);
         expect(wrapper.state('beers')).toEqual([]);
-    })
+    });
+
+    it('adds items to the list', () => {
+        const wrapper = shallow(<BeerListContainer/>);
+        const instance = wrapper.instance() as BeerListContainer;
+
+        instance.addItem('Sam Adams');
+        expect(wrapper.state('beers')).toEqual(['Sam Adams']);
+    });
 });
