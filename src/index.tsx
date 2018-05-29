@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { EnthusiasmAction } from "./actions";
-import Game from './components/Game';
+import Game from './components/game/Game';
 import { enthusiasm } from './reducers/index';
 import { IStoreState } from './types/index';
 
