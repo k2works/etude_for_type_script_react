@@ -12,6 +12,7 @@ export class BeerListContainer extends React.Component<{}, IBeerListContainerSta
         this.state = {
             beers: []
         };
+        this.addItem = this.addItem.bind(this);
     }
 
     public addItem(name: any) {
