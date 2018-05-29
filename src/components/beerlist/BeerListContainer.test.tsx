@@ -25,4 +25,12 @@ describe('BeerListContainer', () => {
         instance.addItem('Sam Adams');
         expect(wrapper.state('beers')).toEqual(['Sam Adams']);
     });
+
+    it('passes addItem to IputArea', () => {
+        const wrapper = shallow(<BeerListContainer/>);
+        const inputArea = wrapper.find(InputArea);
+        const instance = wrapper.instance() as BeerListContainer;
+        const addItem = instance.addItem;
+        expect(inputArea.prop('onSubmit')).toEqual(addItem);
+    })
 });

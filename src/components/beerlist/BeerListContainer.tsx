@@ -22,7 +22,7 @@ export class BeerListContainer extends React.Component<{}, IBeerListContainerSta
 
     public render() {
         return <div>
-            <InputArea/>
+            <InputArea onSubmit={this.addItem}/>
             <BeerList/>
         </div>
     }
