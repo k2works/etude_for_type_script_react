@@ -41,3 +41,15 @@ describe('BeerListContainer', () => {
         // expect(wrapper.state('beer')).toEqual(['Sam Adams']);
     });
 });
+
+describe('InputArea', () => {
+    it('should contain an input and a button', () => {
+        const wrapper = shallow(<InputArea/>);
+        expect(wrapper.containsAllMatchingElements(
+            [
+                <input key={1}/>,
+                <button key={1}>Add</button>
+            ]
+        )).toEqual(true);
+    });
+});

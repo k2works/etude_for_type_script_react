@@ -6,6 +6,11 @@ interface IInputAreaProps {
 
 export class InputArea extends React.Component<IInputAreaProps, object> {
     public render() {
-        return <input/>
+        return (
+            <div>
+                <input/>
+                <button>Add</button>
+            </div>
+        );
     }
 }
