@@ -9,6 +9,7 @@ interface IHistoryData {
 
 interface IGameState {
     history:IHistoryData[];
+    stepNumber:number;
     xIsNext:boolean;
 }
 
@@ -19,13 +20,14 @@ class Game extends React.Component<any, IGameState> {
             history: [{
                 squares: Array(9).fill(null),
             }],
+            stepNumber: 0,
             xIsNext: true,
         };
     }
 
     public render() {
         const history = this.state.history;
-        const current = history[history.length - 1];
+        const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
         const moves = history.map((step, move) => {
@@ -76,13 +78,19 @@ class Game extends React.Component<any, IGameState> {
                 history: history.concat([{
                     squares,
                 }]),
+                stepNumber: history.length,
                 xIsNext: !this.state.xIsNext,
             });
         }
     }
 
-    private jumpTo(move: number) {
-        return undefined;
+    private jumpTo(step: number) {
+        return () => {
+            this.setState({
+                stepNumber: step,
+                xIsNext: (step % 2) === 0,
+            });
+        };
     }
 }
 
