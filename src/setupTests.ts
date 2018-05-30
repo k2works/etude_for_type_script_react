@@ -1,4 +1,3 @@
-import 'jsdom-global/register';
 import * as enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 
