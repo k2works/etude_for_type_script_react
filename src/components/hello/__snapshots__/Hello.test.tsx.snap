@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="hello"
+>
+  <div
+    className="greeting"
+  >
+    Hello 
+    Daniel!!!!!!!!!!
+  </div>
+  <div>
+    <button
+      onClick={undefined}
+    >
+      -
+    </button>
+    <button
+      onClick={undefined}
+    >
+      +
+    </button>
+  </div>
+</div>
+`;

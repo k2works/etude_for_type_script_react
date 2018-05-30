@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import Board from "./Board";
 import Game from "./Game";
+import Square from "./Square";
 
 describe('Game', () => {
     xit('should render Board', () => {
@@ -60,6 +61,27 @@ describe('Game', () => {
     it('renders correctly', () => {
         const tree = renderer
             .create(<Game />)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe('Board', () => {
+    const onClickSpy = jest.fn();
+    it('renders correctly', () => {
+        const tree = renderer
+            .create(<Board squares={[]} onClick={onClickSpy} />)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe('Square', () => {
+    const onClickSpy = jest.fn();
+
+    it('renders correctly', () => {
+        const tree = renderer
+            .create(<Square value={'O'} onClick={onClickSpy}/>)
             .toJSON();
         expect(tree).toMatchSnapshot();
     });

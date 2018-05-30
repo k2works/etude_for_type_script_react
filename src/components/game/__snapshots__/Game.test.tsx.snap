@@ -1,5 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Board renders correctly 1`] = `
+<div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+    />
+    <button
+      className="square"
+      onClick={[Function]}
+    />
+    <button
+      className="square"
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+    />
+    <button
+      className="square"
+      onClick={[Function]}
+    />
+    <button
+      className="square"
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+    />
+    <button
+      className="square"
+      onClick={[Function]}
+    />
+    <button
+      className="square"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
+
 exports[`Game renders correctly 1`] = `
 <div
   className="game"
@@ -75,4 +128,13 @@ exports[`Game renders correctly 1`] = `
     </ol>
   </div>
 </div>
+`;
+
+exports[`Square renders correctly 1`] = `
+<button
+  className="square"
+  onClick={[MockFunction]}
+>
+  O
+</button>
 `;
