@@ -4,10 +4,10 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { EnthusiasmAction } from "./actions";
-import {BeerListContainer} from "./components/beerlist/BeerListContainer";
-import { enthusiasm } from './reducers/index';
-import { IStoreState } from './types/index';
+import { enthusiasm } from './reducers';
+import { IStoreState } from './types';
 
+import App from "./App";
 import './index.css';
 
 const store = createStore<IStoreState, EnthusiasmAction, any, any>(enthusiasm, {
@@ -17,7 +17,7 @@ const store = createStore<IStoreState, EnthusiasmAction, any, any>(enthusiasm, {
 
 ReactDOM.render(
     <Provider store={store}>
-        <BeerListContainer />
+        <App />
     </Provider>,
     document.getElementById('root') as HTMLElement
 );
