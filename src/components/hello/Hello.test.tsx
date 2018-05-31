@@ -1,5 +1,6 @@
 import * as enzyme from 'enzyme';
 import * as React from 'react';
+import * as renderer from "react-test-renderer";
 import Hello from './Hello';
 
 it('renders the correct text when no enthusiasm level is given', () => {
@@ -27,4 +28,11 @@ it('throws when the enthusiasm level is negative,', () => {
     expect(() => {
         enzyme.shallow(<Hello name='Daniel' enthusiasmLevel={-1} />);
     }).toThrow();
+});
+
+it('renders correctly', () => {
+    const tree = renderer
+        .create(<Hello name='Daniel' enthusiasmLevel={10} />)
+        .toJSON();
+    expect(tree).toMatchSnapshot();
 });

@@ -1,5 +1,6 @@
 import {mount, shallow} from "enzyme";
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import {BeerList} from "./BeerList";
 import {BeerListContainer} from "./BeerListContainer";
 import {InputArea} from "./InputArea";
@@ -52,7 +53,14 @@ describe('BeerListContainer', () => {
         input.simulate('change', {target: { value: 'Resin' }});
         addButton.simulate('click');
         expect(wrapper.find('li').length).toEqual(2);
-    })
+    });
+
+    it('renders correctly', () => {
+        const tree = renderer
+            .create(<BeerListContainer />)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 });
 
 describe('InputArea', () => {
@@ -89,6 +97,14 @@ describe('InputArea', () => {
         expect(addItemSpy).toBeCalled();
         expect(addItemSpy).toBeCalledWith('Octoberfest');
     });
+
+    it('renders correctly', () => {
+        const addItemSpy = jest.fn();
+        const tree = renderer
+            .create(<InputArea  onSubmit={addItemSpy}/>)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 });
 
 describe('BeerList', () => {
@@ -101,5 +117,12 @@ describe('BeerList', () => {
         const items = ['Sam Adams', 'Resin', 'Octoberfest'];
         const wrapper = shallow(<BeerList items={items}/>);
         expect(wrapper.find('li')).toHaveLength(3)
+    });
+
+    it('renders correctly', () => {
+        const tree = renderer
+            .create(<BeerList  items={[]}/>)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
     });
 });
