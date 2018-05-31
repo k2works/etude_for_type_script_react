@@ -1,30 +1,49 @@
-import * as constants from '../constants/todo';
+import { Action } from 'redux';
+import {ActionTypes, VisibilityFilters} from "../constants/todo";
 
-export interface IAddTodo {
-    type: constants.ADD_TODO;
-    text: string;
+let nextTodoId: number = 0;
+
+interface IAddTodoAction extends Action {
+    type: ActionTypes.ADD_TODO;
+    payload: {
+        id: number;
+        text: string;
+    };
 }
 
-export interface IToggleTodo {
-    type: constants.TOGGLE_TODO;
-    index: number;
+export const addTodo = (text: string): IAddTodoAction => ({
+    type: ActionTypes.ADD_TODO,
+    payload: {
+        id: nextTodoId += 1,
+        text,
+    }
+});
+
+
+interface ISetVisibilityFilterAction extends Action {
+    type: ActionTypes.SET_VISIBILITY_FILTER;
+    payload: {
+        filter: VisibilityFilters;
+    };
 }
 
-export interface ISetVisibilityFilter {
-    type: constants.SET_VISIBILITY_FILTER;
-    filter: any;
+export const setVisibilityFilter = (filter: VisibilityFilters): ISetVisibilityFilterAction => ({
+    type: ActionTypes.SET_VISIBILITY_FILTER,
+    payload: { filter },
+});
+
+
+interface IToggleTodoAction extends Action {
+    type: ActionTypes.TOGGLE_TODO;
+    payload: {
+        id: number;
+    };
 }
 
-export type TodoAction = IAddTodo | IToggleTodo | ISetVisibilityFilter
+export const toggleTodo = (id: number): IToggleTodoAction => ({
+    type: ActionTypes.TOGGLE_TODO,
+    payload: { id }
+});
 
-export function addTodo(text: string): IAddTodo {
-    return { type: constants.ADD_TODO, text}
-}
 
-export function toggleTodo(index: number): IToggleTodo {
-    return { type: constants.TOGGLE_TODO, index }
-}
-
-export function setVisibilityFilter(filter: any): ISetVisibilityFilter {
-    return { type: constants.SET_VISIBILITY_FILTER, filter}
-}
+export type TodoActions = IAddTodoAction | ISetVisibilityFilterAction | IToggleTodoAction;
