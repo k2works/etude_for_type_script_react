@@ -15,6 +15,8 @@ export interface ISetVisibilityFilter {
     filter: any;
 }
 
+export type TodoAction = IAddTodo | IToggleTodo | ISetVisibilityFilter
+
 export function addTodo(text: string): IAddTodo {
     return { type: constants.ADD_TODO, text}
 }
