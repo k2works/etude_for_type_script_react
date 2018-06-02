@@ -5,6 +5,7 @@ import { EnthusiasmAction } from "./actions";
 import './App.css';
 import {BeerListContainer} from "./components/beerlist/BeerListContainer";
 import Game from "./components/game/Game";
+import BasicExample from "./components/pages/BasicExample";
 import TodoApp from "./components/todo/App";
 import Hello from "./containers/Hello";
 import { enthusiasm } from './reducers';
@@ -20,6 +21,7 @@ const helloStore = createStore<IStoreState, EnthusiasmAction, any, any>(enthusia
 const App = () => {
     return (
         <>
+            <BasicExample/>
             <Provider store={helloStore}>
               <Hello/>
             </Provider>,
