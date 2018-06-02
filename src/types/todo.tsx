@@ -1,6 +1,6 @@
 import {VisibilityFilters} from "../constants/todo";
 
-export interface IState {
+export interface IStoreState {
     readonly visibilityFilter: VisibilityFilters;
     readonly todos: ITodoState[];
 }

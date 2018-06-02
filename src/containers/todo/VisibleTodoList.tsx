@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { TodoActions, toggleTodo} from '../../actions/todo';
 import TodoList from '../../components/todo/TodoList';
 import {VisibilityFilters} from "../../constants/todo";
-import { IState, ITodoState } from '../../types/todo';
+import { IStoreState, ITodoState } from '../../types/todo';
 
 interface IStateToProps {
     todos: ITodoState[];
@@ -26,7 +26,7 @@ const getVisibleTodo = (todos: ITodoState[], filter: VisibilityFilters): ITodoSt
     }
 };
 
-const mapStateToProps = (state: IState): IStateToProps => ({
+const mapStateToProps = (state: IStoreState): IStateToProps => ({
     todos: getVisibleTodo(state.todos, state.visibilityFilter),
 });
 
