@@ -9,3 +9,6 @@
 + [Jest](https://facebook.github.io/jest/ja/)
 + [Enzyme](http://airbnb.io/enzyme/)
 + [Jest + enzymeで行うReactのUT（ユニットテスト ）について](https://mae.chab.in/archives/60066)
+## [Redux](https://redux.js.org/)
++ [Redux Todos Example](https://github.com/reduxjs/redux/tree/master/examples/todos)
++ [Redux TutorialをTypeScriptで実装してみた](https://qiita.com/pepoipod/items/5a83a172d9fbc9acfed0)
