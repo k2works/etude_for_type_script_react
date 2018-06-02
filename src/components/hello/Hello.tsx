@@ -1,22 +1,22 @@
 import * as React from 'react';
+import {IHelloState} from "../../state/hello";
 import './Hello.css';
 
-export interface IProps {
-    name: string;
-    enthusiasmLevel?: number;
+interface IOwnProps {
+    enthusiasm: IHelloState
     onIncrement?: () => void;
     onDecrement?: () => void;
 }
 
-function Hello( {name, enthusiasmLevel = 1, onIncrement, onDecrement }: IProps ) {
-    if (enthusiasmLevel <= 0) {
+function Hello( {enthusiasm, onIncrement, onDecrement }: IOwnProps ) {
+    if (enthusiasm.enthusiasmLevel <= 0) {
         throw new Error('Your could be a little more enthusiastic. :D');
     }
 
     return (
         <div className="hello">
             <div className="greeting">
-            Hello {name + getExclamationMarks(enthusiasmLevel)}
+            Hello {enthusiasm.languageName + getExclamationMarks(enthusiasm.enthusiasmLevel)}
             </div>
             <div>
                 <button onClick={onDecrement}>-</button>

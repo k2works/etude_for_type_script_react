@@ -1,6 +1,6 @@
 import { TodoActions } from '../../actions/todo';
 import {ActionTypes} from "../../constants/todo";
-import { ITodoState } from '../../types/todo';
+import { ITodoState } from '../../state/todo';
 
 const todos = (state: ITodoState[] = [], action: TodoActions): ITodoState[] => {
     switch (action.type) {

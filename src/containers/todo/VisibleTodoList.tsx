@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
+import {withRouter} from "react-router-dom";
 import { Dispatch } from 'redux';
 import { TodoActions, toggleTodo} from '../../actions/todo';
 import TodoList from '../../components/todo/TodoList';
 import {VisibilityFilters} from "../../constants/todo";
-import { IStoreState, ITodoState } from '../../types/todo';
+import { IState, ITodoState } from '../../state/todo';
 
 interface IStateToProps {
     todos: ITodoState[];
@@ -26,7 +27,7 @@ const getVisibleTodo = (todos: ITodoState[], filter: VisibilityFilters): ITodoSt
     }
 };
 
-const mapStateToProps = (state: IStoreState): IStateToProps => ({
+const mapStateToProps = (state: IState): IStateToProps => ({
     todos: getVisibleTodo(state.todos, state.visibilityFilter),
 });
 
@@ -34,7 +35,7 @@ const mapDispatchToProps = (dispatch: Dispatch<TodoActions>): IDispatchToProps =
     toggleTodo: (id: number) => dispatch(toggleTodo(id))
 });
 
-export default connect(
+export default withRouter<any>(connect<any>(
     mapStateToProps,
     mapDispatchToProps
-)(TodoList);
+)(TodoList));

@@ -1,34 +1,16 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { EnthusiasmAction } from "./actions";
+import {createStore} from 'redux';
 import './App.css';
-import {BeerListContainer} from "./components/beerlist/BeerListContainer";
-import Game from "./components/game/Game";
-import BasicExample from "./components/pages/BasicExample";
-import TodoApp from "./components/todo/App";
-import Hello from "./containers/Hello";
-import { enthusiasm } from './reducers';
-import todoApp from './reducers/todo/';
-import { IStoreState } from './types';
+import Nav from "./components/pages/nav";
+import app from './reducers';
 
-const todoStore = createStore(todoApp);
-const helloStore = createStore<IStoreState, EnthusiasmAction, any, any>(enthusiasm, {
-    enthusiasmLevel: 1,
-    languageName: 'TypeScript',
-});
-
+const appStore = createStore(app);
 const App = () => {
     return (
         <>
-            <BasicExample/>
-            <Provider store={helloStore}>
-              <Hello/>
-            </Provider>,
-            <Game/>
-            <BeerListContainer/>
-            <Provider store={todoStore}>
-              <TodoApp/>
+            <Provider store={appStore}>
+                <Nav/>
             </Provider>
         </>
     )

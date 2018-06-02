@@ -1,14 +1,10 @@
 import * as React from 'react';
-import { ITodoState } from '../../types/todo';
+import {ITodoState} from '../../state/todo';
 import Todo from './Todo';
 
 interface IOwnProps {
     todos: ITodoState[];
     toggleTodo: (id: number) => any;
-}
-
-function handleClick(toggleTodo: (id: number) => void, id: number) {
-    return () => toggleTodo(id);
 }
 
 const TodoList: React.SFC<IOwnProps> = (props) => {
@@ -20,7 +16,7 @@ const TodoList: React.SFC<IOwnProps> = (props) => {
                 <Todo
                     key={todo.id}
                     {...todo}
-                    onClick={handleClick(toggleTodo,todo.id)}
+                    onClick={() => toggleTodo(todo.id)}
                 />
             )}
         </ul>

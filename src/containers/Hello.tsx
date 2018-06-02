@@ -1,12 +1,12 @@
 import { connect, Dispatch } from "react-redux";
+import { withRouter } from 'react-router-dom'
 import * as actions from '../actions/';
-import Hello, {IProps} from '../components/hello/Hello';
-import  { IStoreState } from "../types";
+import Hello from '../components/hello/Hello';
+import  { IState } from "../state/hello";
 
-export function mapStateToProps({ enthusiasmLevel, languageName }: IStoreState) {
+export function mapStateToProps({ enthusiasm }: IState) {
     return {
-        enthusiasmLevel,
-        name: languageName,
+        enthusiasm
     }
 }
 
@@ -18,4 +18,4 @@ export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>)
     }
 }
 
-export default connect<IProps>(mapStateToProps,mapDispatchToProps)(Hello);
+export default withRouter<any>(connect<any>(mapStateToProps,mapDispatchToProps)(Hello));
