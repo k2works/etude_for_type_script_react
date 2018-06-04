@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface IOwnProps {
-    onClick: any;
+    onClick: () => void;
     completed: boolean;
     text: string;
 }

@@ -1,14 +1,29 @@
-import { connect } from 'react-redux'
-import {setVisibilityFilter} from "../../actions/todo";
+import {connect, Dispatch} from 'react-redux'
+import {withRouter} from "react-router-dom";
+import {setVisibilityFilter, TodoActions} from "../../actions/todo";
 import Link from '../../components/todo/Link'
+import {VisibilityFilters} from "../../constants/todo";
+import {IState} from "../../state/todo";
 
-const mapStateToProps = (state: any, ownProps: any) => {
+interface IOwnProps {
+    filter: VisibilityFilters;
+}
+
+interface IStateToProps {
+    active: boolean;
+}
+
+interface IDispatchToProps {
+    onClick: () => void;
+}
+
+const mapStateToProps = (state: IState, ownProps: IOwnProps): IStateToProps => {
     return {
         active: ownProps.filter === state.visibilityFilter
     }
 }
 ​
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+const mapDispatchToProps = (dispatch: Dispatch<TodoActions>, ownProps: IOwnProps): IDispatchToProps => {
     return {
         onClick: () => {
             dispatch(setVisibilityFilter(ownProps.filter))
@@ -16,9 +31,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     }
 }
 ​
-const FilterLink = connect(
+const FilterLink = withRouter<any>(connect<any>(
     mapStateToProps,
     mapDispatchToProps
-)(Link)
+)(Link))
 ​
 export default FilterLink

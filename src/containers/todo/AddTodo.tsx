@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from "react-router-dom";
 import { Dispatch } from 'redux';
 import {addTodo, TodoActions} from '../../actions/todo';
 
@@ -38,4 +39,4 @@ const AddTodo: React.SFC<IOwnProps> = (props) => {
     );
 };
 
-export default connect()(AddTodo);
+export default withRouter<any>(connect()(AddTodo));
