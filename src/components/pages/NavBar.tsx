@@ -13,7 +13,9 @@ import Game from "../game/Game";
 import HelloApp from "../hello/App";
 import TodoApp from "../todo/App";
 import About from "./About";
+import AppForm from "./Form";
 import Home from "./Home";
+import AppModal from "./Modal";
 import Topics from "./Topics";
 
 const NavBar: React.SFC = () => {
@@ -32,6 +34,15 @@ const NavBar: React.SFC = () => {
                             <LinkContainer to="/topics">
                                 <NavItem>Topics</NavItem>
                             </LinkContainer>
+                            <LinkContainer to="/form">
+                                <NavItem>Form</NavItem>
+                            </LinkContainer>
+                            <LinkContainer to="/modal">
+                                <NavItem>Modal</NavItem>
+                            </LinkContainer>
+                            <LinkContainer to="/about">
+                                <NavItem>About</NavItem>
+                            </LinkContainer>
 
                             <NavDropdown eventKey={4} title="Application" id="basic-nav-dropdown">
                                 <LinkContainer to="/hello">
@@ -47,10 +58,6 @@ const NavBar: React.SFC = () => {
                                     <MenuItem eventKey={4.4}>TodoList</MenuItem>
                                 </LinkContainer>
                             </NavDropdown>
-
-                            <LinkContainer to="/about">
-                                <NavItem>About</NavItem>
-                            </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
@@ -58,6 +65,8 @@ const NavBar: React.SFC = () => {
                 <Route exact={true} path="/" component={Home}/>
                 <Route path="/about" component={About}/>
                 <Route path="/topics" component={Topics}/>
+                <Route path="/form" component={AppForm}/>
+                <Route path="/modal" component={AppModal}/>
                 <Route path="/hello" component={HelloApp}/>
                 <Route path="/game" component={Game}/>
                 <Route path="/beer-list" component={BeerListContainer}/>
