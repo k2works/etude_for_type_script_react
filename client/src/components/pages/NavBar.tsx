@@ -12,6 +12,7 @@ import {BeerListContainer} from "../beerlist/BeerListContainer";
 import Game from "../game/Game";
 import HelloApp from "../hello/App";
 import TodoApp from "../todo/App";
+import User from "../user/User";
 import About from "./About";
 import AppForm from "./Form";
 import Home from "./Home";
@@ -44,7 +45,7 @@ const NavBar: React.SFC = () => {
                                 <NavItem>About</NavItem>
                             </LinkContainer>
 
-                            <NavDropdown eventKey={4} title="Application" id="basic-nav-dropdown">
+                            <NavDropdown eventKey={5} title="Application" id="basic-nav-dropdown">
                                 <LinkContainer to="/hello">
                                     <MenuItem eventKey={4.1}>Hello</MenuItem>
                                 </LinkContainer>
@@ -56,6 +57,9 @@ const NavBar: React.SFC = () => {
                                 </LinkContainer>
                                 <LinkContainer to="/todo-list">
                                     <MenuItem eventKey={4.4}>TodoList</MenuItem>
+                                </LinkContainer>
+                                <LinkContainer to="/users">
+                                    <MenuItem eventKey={5.5}>Users</MenuItem>
                                 </LinkContainer>
                             </NavDropdown>
                         </Nav>
@@ -71,6 +75,7 @@ const NavBar: React.SFC = () => {
                 <Route path="/game" component={Game}/>
                 <Route path="/beer-list" component={BeerListContainer}/>
                 <Route path="/todo-list" component={TodoApp}/>
+                <Route path="/users" component={User}/>
             </div>
         </Router>
     );

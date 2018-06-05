@@ -31,3 +31,20 @@ export let getFacebook = (req: Request, res: Response, next: NextFunction) => {
     });
   });
 };
+
+/**
+ * GET /api/users
+ * List users.
+ */
+export let getUsers = (req: Request, res: Response) => {
+  res.json([{
+    id: 1,
+    username: "samsepi0l"
+  },{
+    id: 2,
+    username: "D0loresH4ze"
+  }]);
+};
+
+
+
