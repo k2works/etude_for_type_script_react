@@ -39,11 +39,8 @@ export let getFacebook = (req: Request, res: Response, next: NextFunction) => {
  */
 export let getUsers = (req: Request, res: Response) => {
   User.find({}, (err, docs) => {
-    res.send(docs.map(d => {
+    res.send(docs.map((d) => {
       return d.toObject();
     }));
   });
 };
-
-
-
