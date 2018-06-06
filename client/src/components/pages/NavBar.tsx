@@ -12,7 +12,7 @@ import {BeerListContainer} from "../beerlist/BeerListContainer";
 import Game from "../game/Game";
 import HelloApp from "../hello/App";
 import TodoApp from "../todo/App";
-import User from "../user/User";
+import UserApp from "../user/App";
 import About from "./About";
 import AppForm from "./Form";
 import Home from "./Home";
@@ -75,7 +75,7 @@ const NavBar: React.SFC = () => {
                 <Route path="/game" component={Game}/>
                 <Route path="/beer-list" component={BeerListContainer}/>
                 <Route path="/todo-list" component={TodoApp}/>
-                <Route path="/users" component={User}/>
+                <Route path="/users" component={UserApp}/>
             </div>
         </Router>
     );

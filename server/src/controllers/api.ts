@@ -4,6 +4,7 @@ import * as async from "async";
 import { NextFunction, Request, Response } from "express";
 import * as graph from "fbgraph";
 import * as request from "request";
+import { default as User, UserModel } from "../models/User";
 
 /**
  * GET /api
@@ -37,13 +38,11 @@ export let getFacebook = (req: Request, res: Response, next: NextFunction) => {
  * List users.
  */
 export let getUsers = (req: Request, res: Response) => {
-  res.json([{
-    id: 1,
-    username: "samsepi0l"
-  },{
-    id: 2,
-    username: "D0loresH4ze"
-  }]);
+  User.find({}, (err, docs) => {
+    res.send(docs.map(d => {
+      return d.toObject();
+    }));
+  });
 };
 
 

@@ -20,3 +20,6 @@
 + [Create React App with an Express Backend](https://daveceddia.com/create-react-app-express-backend/)
 + [express-generator-ts](https://www.npmjs.com/package/express-generator-ts)
 + [DockerでMongoDBを起動する](https://qiita.com/tanakaworld/items/68fb4817d24418f32cd8)
++ [Redux Thunk](https://github.com/reduxjs/redux-thunk)
++ [React + TypeScript JSX + Reduxで非同期処理を呼ぼう](http://blog.okazuki.jp/entry/2016/01/09/193647)
++ [Correct TypeScript typing example for Redux Thunk actions](https://gist.github.com/milankorsos/ffb9d32755db0304545f92b11f0e4beb)
