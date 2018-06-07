@@ -9,7 +9,7 @@ import {
     BrowserRouter as Router, Link, Route
 } from 'react-router-dom'
 import {BeerListContainer} from "../beerlist/BeerListContainer";
-import Game from "../game/Game";
+import GameApp from "../game/App";
 import HelloApp from "../hello/App";
 import TodoApp from "../todo/App";
 import UserApp from "../user/App";
@@ -72,7 +72,7 @@ const NavBar: React.SFC = () => {
                 <Route path="/form" component={AppForm}/>
                 <Route path="/modal" component={AppModal}/>
                 <Route path="/hello" component={HelloApp}/>
-                <Route path="/game" component={Game}/>
+                <Route path="/game" component={GameApp}/>
                 <Route path="/beer-list" component={BeerListContainer}/>
                 <Route path="/todo-list" component={TodoApp}/>
                 <Route path="/users" component={UserApp}/>
