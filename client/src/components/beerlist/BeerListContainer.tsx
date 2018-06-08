@@ -1,30 +1,27 @@
 import * as React from "react";
+import { IState } from "../../state/beerList";
 import {BeerList} from "./BeerList";
 import {InputArea} from "./InputArea";
 
-interface IBeerListContainerState {
-    beers: any;
+interface IOwnProps {
+    beerList: IState;
+    addItem: (name: any) => void;
+    changeItem: (name: any) => void;
 }
 
-export class BeerListContainer extends React.Component<{}, IBeerListContainerState> {
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            beers: []
-        };
-        this.addItem = this.addItem.bind(this);
-    }
+export const BeerListContainer: React.SFC<IOwnProps> = (props) => {
+    const {beerList, addItem, changeItem} = props;
 
-    public addItem(name: any) {
-        this.setState({
-            beers: [].concat(this.state.beers).concat(name)
-        });
-    }
-
-    public render() {
-        return <div>
-            <InputArea onSubmit={this.addItem}/>
-            <BeerList items={this.state.beers}/>
+    return (
+        <div>
+            <InputArea
+                text={beerList.text}
+                onSubmit={(name: string) => addItem(name)}
+                onChange={(name: string) => changeItem(name)}
+            />
+            <BeerList items={beerList.beers}/>
         </div>
-    }
-}
+    );
+};
+
+export default BeerListContainer;

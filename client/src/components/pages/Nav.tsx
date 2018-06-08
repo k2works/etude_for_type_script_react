@@ -4,7 +4,7 @@ import {
     Link,
     Route
 } from 'react-router-dom'
-import {BeerListContainer} from "../beerlist/BeerListContainer";
+import BeerApp from "../beerlist/App";
 import GameApp from "../game/App";
 import HelloApp from "../hello/App";
 import TodoApp from "../todo/App";
@@ -33,7 +33,7 @@ const Nav: React.SFC = () => {
                 <Route path="/topics" component={Topics}/>
                 <Route path="/hello" component={HelloApp}/>
                 <Route path="/game" component={GameApp}/>
-                <Route path="/beer-list" component={BeerListContainer}/>
+                <Route path="/beer-list" component={BeerApp}/>
                 <Route path="/todo-list" component={TodoApp}/>
             </div>
         </Router>

@@ -8,7 +8,7 @@ import LinkContainer from "react-router-bootstrap/lib/LinkContainer";
 import {
     BrowserRouter as Router, Link, Route
 } from 'react-router-dom'
-import {BeerListContainer} from "../beerlist/BeerListContainer";
+import BeerListApp from "../beerlist/App";
 import GameApp from "../game/App";
 import HelloApp from "../hello/App";
 import TodoApp from "../todo/App";
@@ -73,7 +73,7 @@ const NavBar: React.SFC = () => {
                 <Route path="/modal" component={AppModal}/>
                 <Route path="/hello" component={HelloApp}/>
                 <Route path="/game" component={GameApp}/>
-                <Route path="/beer-list" component={BeerListContainer}/>
+                <Route path="/beer-list" component={BeerListApp}/>
                 <Route path="/todo-list" component={TodoApp}/>
                 <Route path="/users" component={UserApp}/>
             </div>
