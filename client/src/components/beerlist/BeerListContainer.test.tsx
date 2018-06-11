@@ -1,10 +1,10 @@
 import {mount, shallow} from "enzyme";
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { IState } from "../../state/beerList";
 import {BeerList} from "./BeerList";
 import {BeerListContainer} from "./BeerListContainer";
 import {InputArea} from "./InputArea";
-import { IState } from "../../state/beerList";
 
 describe('BeerListContainer', () => {
     xit('should render InputArea and BeerList', () => {
